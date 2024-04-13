@@ -14,15 +14,14 @@ const getTopicById = async(id:any)=>{
     } catch (err){
         console.log(err)
     }
-   
+
 }
 
 export default async function EditTopic({params}:any){
     const {id} = params
-    console.log(id)
     const {topic}=await getTopicById(id)
     const {title, description} =topic
-    console.log(topic)
+    
     return(
         <Fragment>
             <EditTopicForm id ={id} title = {title} description = {description}/>

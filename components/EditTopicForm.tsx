@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { z } from 'zod';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormDataSchema } from "@/lib/schema";
+import toast from "react-hot-toast";
 
 type Inputs = z.infer<typeof FormDataSchema>
 
@@ -26,9 +27,13 @@ export default function EditTopicForm({ id, title, description }: any) {
             if (!res.ok) {
                 throw new Error('Failed to update Topic')
             }
-            console.log('updated')
+           if (res.ok) {
+            toast.success('Topic updated')
             router.push('/');
             router.refresh();
+           } else {
+            toast.error('Failed to update Topic.')
+           }
         } catch (err) {
             console.log(err);
         }
@@ -38,13 +43,7 @@ export default function EditTopicForm({ id, title, description }: any) {
         <Fragment>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
                 <input
-                    {...register('title', {
-                        required: "Title is required",
-                        minLength: {
-                            value: 4,
-                            message: 'Title Should be At least 4 character'
-                        }
-                    })}
+                    {...register('title')}
                     defaultValue={title} // Set default value here
                     type="text"
                     placeholder="Topic Title"
@@ -55,13 +54,7 @@ export default function EditTopicForm({ id, title, description }: any) {
                 )}
 
                 <input
-                    {...register('description', {
-                        required: 'Description is required',
-                        minLength: {
-                            value: 4,
-                            message: 'Description Should be at least 4 character'
-                        }
-                    })}
+                    {...register('description')}
                     defaultValue={description} // Set default value here
                     type="text"
                     placeholder="Topic Description"
