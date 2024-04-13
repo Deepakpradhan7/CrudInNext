@@ -1,4 +1,5 @@
-// 'use client'
+
+import Loader2 from 'lucide-react'
 import { Fragment, cache } from "react"
 import RemoveBtn from "./RemoveBtn"
 import Link from "next/link"
@@ -21,9 +22,10 @@ const getTopics = async() =>{
 }
 
 export default async function TopicsList(){
-    // await getTopics()
-    const {topics} = await getTopics()
-   
+    const {topics} = await getTopics() || [];
+    if (!topics){
+        return <>Loading...</>
+    }
     return(
     <Fragment>
        {
