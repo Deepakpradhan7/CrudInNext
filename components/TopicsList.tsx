@@ -8,7 +8,7 @@ import {HiPencilAlt} from 'react-icons/hi'
 
 const getTopics = async() =>{
     try {
-        const res = await fetch(`http://localhost:3000/api/topics`, {
+        const res = await fetch(`https://next-crudex.vercel.app/api/topics`, {
             cache: 'no-cache'
         });
         if (!res.ok){

@@ -19,7 +19,7 @@ export default function AddTopic(){
 
     const onSubmit = async (data: any)=>{
     try{
-       const res = await fetch('http://localhost:3000/api/topics',{
+       const res = await fetch('https://next-crudex.vercel.app/api/topics',{
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'

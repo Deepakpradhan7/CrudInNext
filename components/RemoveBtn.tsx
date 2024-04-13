@@ -18,7 +18,7 @@ export default function RemoveBtn({id}:any){
     const router = useRouter()
     const removeTopic = async()=>{
         // const confirmed = confirm(' Are You Sure?')
-           const res = await fetch(`http://localhost:3000/api/topics?id=${id}`, {
+           const res = await fetch(`https://next-crudex.vercel.app/api/topics?id=${id}`, {
                 method: 'DELETE'
             })
             if (res.ok){

@@ -3,7 +3,7 @@ import { Fragment } from "react";
 
 const getTopicById = async(id:any)=>{
     try{
-        const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
+        const res = await fetch(`https://next-crudex.vercel.app/api/topics/${id}`, {
             cache: 'no-store'
         })
         if (!res.ok){

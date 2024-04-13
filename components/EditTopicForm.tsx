@@ -17,7 +17,7 @@ export default function EditTopicForm({ id, title, description }: any) {
 
     const onSubmit = async (data: any) => {
         try {
-            const res = await fetch(`http://localhost:3000/api/topics/${id}`, {
+            const res = await fetch(`https://next-crudex.vercel.app/api/topics/${id}`, {
                 method: "PUT",
                 headers: {
                     'Content-type': 'application/json'
